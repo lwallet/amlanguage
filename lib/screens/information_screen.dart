@@ -1,5 +1,6 @@
 import 'package:flash_chat_starting_project/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'questionnary_screen.dart';
@@ -52,11 +53,12 @@ class _InformationScreenState extends State<InformationScreen> {
                       onPressed: () {
                         Navigator.pushNamed(context, ChatScreen.id);
                       },
-                      child: SpecialText("Chat", screenWidth / 25, Color(0xffffffff)),
                       style: TextButton.styleFrom(
                         foregroundColor: Colors.white,
                         backgroundColor: Colors.orange,
                       ),
+                      child: SpecialText(
+                          "Chat", screenWidth / 25, const Color(0xffffffff)),
                     ),
                   ),
                 ),
@@ -67,11 +69,12 @@ class _InformationScreenState extends State<InformationScreen> {
                       onPressed: () {
                         Navigator.pushNamed(context, Questionnary_Screen.id);
                       },
-                      child: SpecialText("Questionnaires", screenWidth / 25, Color(0xFFFFFFFF)),
                       style: TextButton.styleFrom(
                         foregroundColor: Colors.white,
                         backgroundColor: Colors.deepOrangeAccent,
                       ),
+                      child: SpecialText("Questionnaires", screenWidth / 25,
+                          const Color(0xFFFFFFFF)),
                     ),
                   ),
                 ),
@@ -91,7 +94,7 @@ class _InformationScreenState extends State<InformationScreen> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(150.0, 30.0, 8.0, 0.0),
+                    padding: const EdgeInsets.fromLTRB(150.0, 30.0, 8.0, 0.0),
                     child: Row(
                       children: [
                         Text(
@@ -118,26 +121,27 @@ class _InformationScreenState extends State<InformationScreen> {
                 "quality English Language schools in Malta. AM Language is licensed "
                 "by the Ministry of Education in Malta and all our departments are "
                 "ISO 9001 accredited.",
-                screenWidth / 25, Color(0xff000000),
+                screenWidth / 25,
+                const Color(0xff000000),
               ),
             ),
             ElevatedButton(
-              child: Text(
+              child: const Text(
                 "Click here to get more information",
                 style: TextStyle(color: Colors.white),
               ),
               onPressed: () async {
-                final url = "https://amlanguage.com/about-us/";
+                const url = "https://amlanguage.com/about-us/";
                 if (await canLaunchUrl(Uri.parse(url))) {
                   await launchUrl(Uri.parse(url));
                 } else {
                   throw 'Could not launch $url';
                 }
-                print("information has been clicked");
+                //print("information has been clicked");
               },
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 0.0),
+              padding: const EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 0.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -151,7 +155,7 @@ class _InformationScreenState extends State<InformationScreen> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
+                    children: const [
                       Text(
                         "AM Language",
                         style: TextStyle(
@@ -164,35 +168,50 @@ class _InformationScreenState extends State<InformationScreen> {
                         "Office Hours:",
                         style: TextStyle(
                           color: Colors.black45,
-
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],
                   ),
                   Row(
-                    children: [
-                      Text("299 Triq Manwel Dimech",style: TextStyle(
-                        color: Colors.black45,),),
+                    children: const [
+                      Text(
+                        "299 Triq Manwel Dimech",
+                        style: TextStyle(
+                          color: Colors.black45,
+                        ),
+                      ),
                       Spacer(),
-                      Text("Monday to Friday",style: TextStyle(
-                        color: Colors.black45,),),
+                      Text(
+                        "Monday to Friday",
+                        style: TextStyle(
+                          color: Colors.black45,
+                        ),
+                      ),
                     ],
                   ),
                   Row(
-                    children: [
-                      Text("Sliema, SLM 1054 - Malta",style: TextStyle(
-                        color: Colors.black45,),),
+                    children: const [
+                      Text(
+                        "Sliema, SLM 1054 - Malta",
+                        style: TextStyle(
+                          color: Colors.black45,
+                        ),
+                      ),
                       Spacer(),
-                      Text("08:30 to 17:30",style: TextStyle(
-                        color: Colors.black45,),),
+                      Text(
+                        "08:30 to 17:30",
+                        style: TextStyle(
+                          color: Colors.black45,
+                        ),
+                      ),
                     ],
                   ),
                 ],
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
                   SizedBox(
@@ -200,14 +219,14 @@ class _InformationScreenState extends State<InformationScreen> {
                     child: Image.asset("images/AM_Language_localisation.png"),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(
-                      child: Text(
+                      child: const Text(
                         "Click here to find us in realtime",
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () async {
-                        final url =
+                        const url =
                             "https://www.google.com/maps/place/AM+Language/"
                             "@35.9095619,14.4977557,17z/data=!3m1!4b1!4m6!3m5!1s0x130"
                             "e4539a1595a67:0x4d45d767f96a2a0d!8m2!3d35."
@@ -217,7 +236,7 @@ class _InformationScreenState extends State<InformationScreen> {
                         } else {
                           throw 'Could not launch $url';
                         }
-                        print("Map has been clicked");
+                        //print("Map has been clicked");
                       },
                     ),
                   ),
@@ -235,7 +254,7 @@ class _InformationScreenState extends State<InformationScreen> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
@@ -255,15 +274,15 @@ class _InformationScreenState extends State<InformationScreen> {
                                         isChanged = true;
                                       }
                                     });
-                                    print("Sales has been clicked");
+                                    //print("Sales has been clicked");
                                   },
-                                  child: Text(buttonTextSalesReservations),
                                   style: OutlinedButton.styleFrom(
                                     foregroundColor: Colors.deepOrangeAccent,
-                                    side: BorderSide(
+                                    side: const BorderSide(
                                         width: 1.0,
                                         color: Colors.deepOrangeAccent),
                                   ),
+                                  child: Text(buttonTextSalesReservations),
                                 ),
                               ),
                               SizedBox(
@@ -282,22 +301,22 @@ class _InformationScreenState extends State<InformationScreen> {
                                         isChanged = true;
                                       }
                                     });
-                                    print("Accommodation has been clicked");
+                                    //print("Accommodation has been clicked");
                                   },
-                                  child: Text(buttonTextAccommodation),
                                   style: OutlinedButton.styleFrom(
                                     foregroundColor: Colors.deepOrangeAccent,
-                                    side: BorderSide(
+                                    side: const BorderSide(
                                         width: 1.0,
                                         color: Colors.deepOrangeAccent),
                                   ),
+                                  child: Text(buttonTextAccommodation),
                                 ),
                               ),
                             ],
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
@@ -317,16 +336,15 @@ class _InformationScreenState extends State<InformationScreen> {
                                         isChanged = true;
                                       }
                                     });
-                                    print(
-                                        "Leisure Department has been clicked");
+                                    //print("Leisure Department has been clicked");
                                   },
-                                  child: Text(buttonTextLeisureDepartment),
                                   style: OutlinedButton.styleFrom(
                                     foregroundColor: Colors.deepOrangeAccent,
-                                    side: BorderSide(
+                                    side: const BorderSide(
                                         width: 1.0,
                                         color: Colors.deepOrangeAccent),
                                   ),
+                                  child: Text(buttonTextLeisureDepartment),
                                 ),
                               ),
                               SizedBox(
@@ -345,22 +363,22 @@ class _InformationScreenState extends State<InformationScreen> {
                                         isChanged = true;
                                       }
                                     });
-                                    print("Taxi Transfer has been clicked");
+                                    //print("Taxi Transfer has been clicked");
                                   },
-                                  child: Text(buttonTextTaxiTransfer),
                                   style: OutlinedButton.styleFrom(
                                     foregroundColor: Colors.deepOrangeAccent,
-                                    side: BorderSide(
+                                    side: const BorderSide(
                                         width: 1.0,
                                         color: Colors.deepOrangeAccent),
                                   ),
+                                  child: Text(buttonTextTaxiTransfer),
                                 ),
                               ),
                             ],
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
@@ -380,23 +398,21 @@ class _InformationScreenState extends State<InformationScreen> {
                                         isChanged = true;
                                       }
                                     });
-                                    print(
-                                        "info@amlanguage.com has been clicked");
+                                    // print("info@amlanguage.com has been clicked");
                                   },
-                                  child: Text(buttonTextInfoAtAmlanguage),
                                   style: OutlinedButton.styleFrom(
                                     foregroundColor: Colors.deepOrangeAccent,
-                                    side: BorderSide(
+                                    side: const BorderSide(
                                         width: 1.0,
                                         color: Colors.deepOrangeAccent),
                                   ),
+                                  child: Text(buttonTextInfoAtAmlanguage),
                                 ),
                               ),
                               SizedBox(
                                 width: screenHeight / 6,
                                 height: screenWidth / 8,
                                 child: OutlinedButton(
-                                  child: Text(buttonTextEmergancy),
                                   onPressed: () {
                                     setState(() {
                                       if (isChanged) {
@@ -408,15 +424,15 @@ class _InformationScreenState extends State<InformationScreen> {
                                         isChanged = true;
                                       }
                                     });
-                                    print(
-                                        " Other emengencies has been clicked");
+                                    // print(" Other emengencies has been clicked");
                                   },
                                   style: OutlinedButton.styleFrom(
                                     foregroundColor: Colors.deepOrangeAccent,
-                                    side: BorderSide(
+                                    side: const BorderSide(
                                         width: 1.0,
                                         color: Colors.deepOrangeAccent),
                                   ),
+                                  child: Text(buttonTextEmergancy),
                                 ),
                               ),
                             ],

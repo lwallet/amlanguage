@@ -66,7 +66,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '409210327322',
     projectId: 'amlanguage-1ae39',
     storageBucket: 'amlanguage-1ae39.appspot.com',
-    iosClientId: '409210327322-16ccdbv1q0bkgdo0hej7r4voeh1ul6v4.apps.googleusercontent.com',
+    iosClientId:
+        '409210327322-16ccdbv1q0bkgdo0hej7r4voeh1ul6v4.apps.googleusercontent.com',
     iosBundleId: 'com.example.flashChatStartingProject',
   );
 
@@ -76,7 +77,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '409210327322',
     projectId: 'amlanguage-1ae39',
     storageBucket: 'amlanguage-1ae39.appspot.com',
-    iosClientId: '409210327322-16ccdbv1q0bkgdo0hej7r4voeh1ul6v4.apps.googleusercontent.com',
+    iosClientId:
+        '409210327322-16ccdbv1q0bkgdo0hej7r4voeh1ul6v4.apps.googleusercontent.com',
     iosBundleId: 'com.example.flashChatStartingProject',
   );
 }

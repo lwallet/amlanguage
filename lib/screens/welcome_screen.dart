@@ -10,6 +10,7 @@ class WelcomeScreen extends StatefulWidget {
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
+
 class _WelcomeScreenState extends State<WelcomeScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
@@ -55,9 +56,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     ),
                     Flexible(
                       child: TypewriterAnimatedTextKit(
-                        speed: Duration(milliseconds: 200),
-                        text: ['AM Language'],
-                        textStyle: TextStyle(
+                        speed: const Duration(milliseconds: 200),
+                        text: const ['AM Language'],
+                        textStyle: const TextStyle(
                           fontSize: 35.0,
                           fontWeight: FontWeight.w900,
                           color: Colors.black45,

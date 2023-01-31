@@ -3,13 +3,14 @@ import 'package:flash_chat_starting_project/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 late User loggedInUser;
 
 class ChatScreen extends StatefulWidget {
   static const String id = 'chat_screen';
+
+  const ChatScreen({super.key});
 
   @override
   _ChatScreenState createState() => _ChatScreenState();
@@ -28,7 +29,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void getCurrentUser() async {
     try {
-      User? user = await _auth.currentUser;
+      User? user = _auth.currentUser;
       if (user != null) {
         loggedInUser = user;
       }
@@ -44,14 +45,14 @@ class _ChatScreenState extends State<ChatScreen> {
         leading: null,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.close),
+            icon: const Icon(Icons.close),
             onPressed: () {
               _auth.signOut();
               Navigator.pop(context);
             },
           ),
         ],
-        title: Text('Am Chat'),
+        title: const Text('Am Chat'),
         backgroundColor: Colors.orangeAccent,
       ),
       body: SafeArea(
@@ -69,7 +70,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   children: <Widget>[
                     Expanded(
                       child: TextField(
-                        style: TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.black),
                         controller: messageTextController,
                         onChanged: (value) {
                           messageText = value;
@@ -83,10 +84,10 @@ class _ChatScreenState extends State<ChatScreen> {
                         _firestore.collection('messages').add({
                           'text': messageText,
                           'sender': loggedInUser.email,
-                          'createdAt' : Timestamp.now(),
+                          'createdAt': Timestamp.now(),
                         });
                       },
-                      child: Text(
+                      child: const Text(
                         'Send',
                         style: kSendButtonTextStyle,
                       ),
@@ -106,10 +107,13 @@ class MessagesStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance.collection('messages').orderBy('createdAt').snapshots(),
+      stream: FirebaseFirestore.instance
+          .collection('messages')
+          .orderBy('createdAt')
+          .snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(
               backgroundColor: Colors.lightBlueAccent,
             ),
@@ -118,8 +122,8 @@ class MessagesStream extends StatelessWidget {
         final messages = snapshot.data?.docs.reversed.toList();
         List<MessageBubble> messageBubbles = [];
         for (var message in messages!) {
-          final messageText = message['text']?? '';
-          final messageSender = message['sender']??'';
+          final messageText = message['text'] ?? '';
+          final messageSender = message['sender'] ?? '';
           final currentUser = loggedInUser.email;
 
           final messageBubble = MessageBubble(
@@ -133,7 +137,8 @@ class MessagesStream extends StatelessWidget {
         return Expanded(
           child: ListView(
             reverse: true,
-            padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
             children: messageBubbles,
           ),
         );
@@ -152,33 +157,34 @@ class MessageBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(10.0),
       child: Column(
         crossAxisAlignment:
-        isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+            isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: <Widget>[
           Text(
             sender,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 12.0,
               color: Colors.black54,
             ),
           ),
           Material(
             borderRadius: isMe
-                ? BorderRadius.only(
-                topLeft: Radius.circular(30.0),
-                bottomLeft: Radius.circular(30.0),
-                bottomRight: Radius.circular(30.0))
-                : BorderRadius.only(
-              bottomLeft: Radius.circular(30.0),
-              bottomRight: Radius.circular(30.0),
-              topRight: Radius.circular(30.0),
-            ),
+                ? const BorderRadius.only(
+                    topLeft: Radius.circular(30.0),
+                    bottomLeft: Radius.circular(30.0),
+                    bottomRight: Radius.circular(30.0))
+                : const BorderRadius.only(
+                    bottomLeft: Radius.circular(30.0),
+                    bottomRight: Radius.circular(30.0),
+                    topRight: Radius.circular(30.0),
+                  ),
             elevation: 5.0,
             color: isMe ? Colors.lightBlueAccent : Colors.white,
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
               child: Text(
                 text,
                 style: TextStyle(

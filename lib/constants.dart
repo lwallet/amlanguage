@@ -10,9 +10,9 @@ const kBackgroundColor = Colors.white12;
 
 const kBackColorDecoration = BoxDecoration(
     gradient: LinearGradient(colors: [
-      Color.fromRGBO(255, 188, 117, 0.2),
-      Color.fromRGBO(255, 165, 0, 0.9),
-    ], begin: Alignment.topRight, end: Alignment.bottomLeft));
+  Color.fromRGBO(255, 188, 117, 0.2),
+  Color.fromRGBO(255, 165, 0, 0.9),
+], begin: Alignment.topRight, end: Alignment.bottomLeft));
 
 const kSendButtonTextStyle = TextStyle(
   color: Colors.lightBlueAccent,
@@ -33,7 +33,8 @@ const kMessageContainerDecoration = BoxDecoration(
 );
 const kTextFieldDecoration = InputDecoration(
   hintText: 'Enter a value',
-  fillColor: Colors.white70, filled: true,
+  fillColor: Colors.white70,
+  filled: true,
   hintStyle: TextStyle(color: Colors.black45),
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
   border: OutlineInputBorder(
