@@ -32,6 +32,7 @@ class _InformationScreenState extends State<InformationScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.deepOrangeAccent,
         title: Text(widget.title),
         centerTitle: true,
       ),
@@ -51,7 +52,7 @@ class _InformationScreenState extends State<InformationScreen> {
                       onPressed: () {
                         Navigator.pushNamed(context, ChatScreen.id);
                       },
-                      child: SpecialText("Chat", screenWidth / 25),
+                      child: SpecialText("Chat", screenWidth / 25, Color(0xffffffff)),
                       style: TextButton.styleFrom(
                         foregroundColor: Colors.white,
                         backgroundColor: Colors.orange,
@@ -66,7 +67,7 @@ class _InformationScreenState extends State<InformationScreen> {
                       onPressed: () {
                         Navigator.pushNamed(context, Questionnary_Screen.id);
                       },
-                      child: SpecialText("Questionaries", screenWidth / 25),
+                      child: SpecialText("Questionnaires", screenWidth / 25, Color(0xFFFFFFFF)),
                       style: TextButton.styleFrom(
                         foregroundColor: Colors.white,
                         backgroundColor: Colors.deepOrangeAccent,
@@ -117,7 +118,7 @@ class _InformationScreenState extends State<InformationScreen> {
                 "quality English Language schools in Malta. AM Language is licensed "
                 "by the Ministry of Education in Malta and all our departments are "
                 "ISO 9001 accredited.",
-                screenWidth / 25,
+                screenWidth / 25, Color(0xff000000),
               ),
             ),
             ElevatedButton(
@@ -154,6 +155,7 @@ class _InformationScreenState extends State<InformationScreen> {
                       Text(
                         "AM Language",
                         style: TextStyle(
+                          color: Colors.black45,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -161,6 +163,8 @@ class _InformationScreenState extends State<InformationScreen> {
                       Text(
                         "Office Hours:",
                         style: TextStyle(
+                          color: Colors.black45,
+
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -168,16 +172,20 @@ class _InformationScreenState extends State<InformationScreen> {
                   ),
                   Row(
                     children: [
-                      Text("299 Triq Manwel Dimech"),
+                      Text("299 Triq Manwel Dimech",style: TextStyle(
+                        color: Colors.black45,),),
                       Spacer(),
-                      Text("Monday to Friday"),
+                      Text("Monday to Friday",style: TextStyle(
+                        color: Colors.black45,),),
                     ],
                   ),
                   Row(
                     children: [
-                      Text("Sliema, SLM 1054 - Malta"),
+                      Text("Sliema, SLM 1054 - Malta",style: TextStyle(
+                        color: Colors.black45,),),
                       Spacer(),
-                      Text("08:30 to 17:30"),
+                      Text("08:30 to 17:30",style: TextStyle(
+                        color: Colors.black45,),),
                     ],
                   ),
                 ],
@@ -430,14 +438,15 @@ class _InformationScreenState extends State<InformationScreen> {
 class SpecialText extends StatelessWidget {
   String content;
   double SpecialTextSize;
+  Color color;
 
-  SpecialText(this.content, this.SpecialTextSize);
+  SpecialText(this.content, this.SpecialTextSize, this.color);
 
   @override
   Widget build(BuildContext context) {
     return Text(
       content,
-      style: TextStyle(fontSize: SpecialTextSize, color: Colors.black45),
+      style: TextStyle(fontSize: SpecialTextSize, color: color),
     );
   }
 }

@@ -8,7 +8,6 @@ import 'firebase_options.dart';
 import 'constants.dart';
 import 'package:flutter/material.dart';
 import '/screens/welcome_screen.dart';
-import 'package:flash_chat_starting_project/screens/information_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

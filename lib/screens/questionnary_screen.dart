@@ -1,5 +1,5 @@
-import 'package:conditional_questions/conditional_questions.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Questionnary_Screen extends StatefulWidget {
   static const id = 'questionnary_screen';
@@ -9,106 +9,59 @@ class Questionnary_Screen extends StatefulWidget {
 }
 
 class _Questionnary_ScreenState extends State<Questionnary_Screen> {
-  String _selectedFormUrl = "https://forms.office.com/form1";
-  late InAppWebViewController _controller;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Forms"),
-      ),
-      body: Column(
-        children: [
+      backgroundColor: Colors.white,
+
+        appBar: AppBar(
+          backgroundColor: Colors.deepOrangeAccent,
+          title: Text("Questionnary"),
+        ),
+        body: Column(children: [
           Expanded(
             child: Container(
-              height: 100,
+              height: 200,
               child: ListView(
                 scrollDirection: Axis.vertical,
-
                 children: [
-                  Container(
-                    width: 80,
-                    child: TextButton(
-                      onPressed: () {
-                        setState(() {
-                          _selectedFormUrl = "https://forms.office.com/form1";
-                        });
-                      },
-                      child: Text("Form 1"),
-                    ),
-                  ),
-                  Container(
-                    width: 80,
-                    child: TextButton(
-                      onPressed: () {
-                        setState(() {
-                          _selectedFormUrl = "https://forms.office.com/form2";
-                        });
-                      },
-                      child: Text("Form 2"),
-                    ),
-                  ),
-                  Container(
-                    width: 80,
-                    child: TextButton(
-                      onPressed: () {
-                        setState(() {
-                          _selectedFormUrl = "https://forms.office.com/form3";
-                        });
-                      },
-                      child: Text("Form 3"),
-                    ),
-                  ),
-                  Container(
-                    width: 80,
-                    child: TextButton(
-                      onPressed: () {
-                        setState(() {
-                          _selectedFormUrl = "https://forms.office.com/form4";
-                        });
-                      },
-                      child: Text("Form 4"),
-                    ),
-                  ),
-                  Container(
-                    width: 80,
-                    child: TextButton(
-                      onPressed: () {
-                        setState(() {
-                          _selectedFormUrl = "https://forms.office.com/form5";
-                        });
-                      },
-                      child: Text("Form 5"),
-                    ),
-                  ),
-                  Container(
-                    width: 80,
-                    child: TextButton(
-                      onPressed: () {
-                        setState(() {
-                          _selectedFormUrl = "https://forms.office.com/form6";
-                        });
-                      },
-                      child: Text("Form 6"),
-                    ),
-                  ),
-                  Container(
-                    width: 80,
-                    child: TextButton(
-                      onPressed: () {
-                        setState(() {
-                          _selectedFormUrl = "https://forms.office.com/form7";
-                        });
-                      },
-                      child: Text("Form 7"),
-                    ),
-                  ),
+                  FormButton("https://forms.office.com/e/nGMQQ4r7na", "First impression Internship"),
+                  FormButton("https://forms.office.com/form2", "First impression Teenager"),
+                  FormButton("https://forms.office.com/form3", "First impression Adult"),
+                  SizedBox(height: 20),
+                  FormButton("https://forms.office.com/e/k2RJHE1BHS", "In process Internship"),
+                  FormButton("https://forms.office.com/e/eUr2AZ2z8q", "In process Teenager"),
+                  FormButton("https://forms.office.com/e/5BZT3BmLW0", "In process Adult"),
+                  SizedBox(height: 20),
+                  FormButton("https://forms.office.com/e/qaUivXTm5T", "End of stay Internship"),
+                  FormButton("https://forms.office.com/e/dHitgpdcsG", "End of stay Teenager"),
+                  FormButton("https://forms.office.com/e/5jjwhE7GwV", "End of stay Adult"),
+                  FormButton("https://forms.office.com/e/e2bvYYbVge", "Teenage Group End of stay"),
                 ],
               ),
             ),
-          )
-        ],
+          ),
+        ],),);
+  }
+
+  Widget FormButton(String formUrl, String formNumber) {
+    return Container(
+      height: 50,
+
+      width: 100,
+      child: ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(Colors.white),
+        ),
+        onPressed: () async {
+          if (await canLaunch(formUrl)) {
+            await launch(formUrl);
+          } else {
+            throw 'Could not launch $formUrl';
+          }
+        },
+        child: Text(formNumber, style: TextStyle(color: Colors.black),),
       ),
     );
   }
