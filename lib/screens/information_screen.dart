@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../constants.dart';
 import 'questionnary_screen.dart';
 
 class InformationScreen extends StatefulWidget {
@@ -29,6 +30,7 @@ class _InformationScreenState extends State<InformationScreen> {
     var screenInfo = MediaQuery.of(context);
     final double screenHeight = screenInfo.size.height;
     final double screenWidth = screenInfo.size.width;
+
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -113,14 +115,7 @@ class _InformationScreenState extends State<InformationScreen> {
             Padding(
               padding: EdgeInsets.all(screenHeight / 100),
               child: SpecialText(
-                "One of the first English Language schools in Malta, "
-                "AM Language has a history for offering quality English "
-                "Language courses and customer satisfaction. Established in 1987, "
-                "AM Language is a founder member of FELTOM (Federation of English "
-                "Language Teaching Organizations of Malta), the association for "
-                "quality English Language schools in Malta. AM Language is licensed "
-                "by the Ministry of Education in Malta and all our departments are "
-                "ISO 9001 accredited.",
+                amstory,
                 screenWidth / 25,
                 const Color(0xff000000),
               ),

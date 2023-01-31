@@ -1,11 +1,4 @@
 import 'package:flutter/material.dart';
-
-const kWhiteColor = Colors.white;
-const kChatEmailColor = Colors.white54;
-const kSenderBoxColor = Colors.white12;
-const kLoginButtonColor = Colors.blue;
-const kSendButtonColor = Colors.blue;
-var kRegisterButtonColor = Colors.yellow.shade900;
 const kBackgroundColor = Colors.white12;
 
 const kBackColorDecoration = BoxDecoration(
@@ -49,3 +42,11 @@ const kTextFieldDecoration = InputDecoration(
     borderRadius: BorderRadius.all(Radius.circular(32.0)),
   ),
 );
+var amstory = "One of the first English Language schools in Malta, "
+    "AM Language has a history for offering quality English "
+    "Language courses and customer satisfaction. Established in 1987, "
+    "AM Language is a founder member of FELTOM (Federation of English "
+    "Language Teaching Organizations of Malta), the association for "
+    "quality English Language schools in Malta. AM Language is licensed "
+    "by the Ministry of Education in Malta and all our departments are "
+    "ISO 9001 accredited.";
